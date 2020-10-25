@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+<div id="pallete">
+    <div class="pen" style="background-color: rgb(255, 255, 255)" onclick="setColor('255, 255, 255')"></div>
+    <div class="pen" style="background-color: rgb(255, 0, 0)" onclick="setColor('255, 0, 0')"></div>
+    <div class="pen" style="background-color: rgb(255, 255, 0)" onclick="setColor('255, 255, 0')"></div>
+    <div class="pen" style="background-color: rgb(0, 255, 0)" onclick="setColor('0, 255, 0')"></div>
+    <div class="pen" style="background-color: rgb(0, 255, 255)" onclick="setColor('0, 255, 255')"></div>
+    <div class="pen" style="background-color: rgb(0, 0, 255)" onclick="setColor('0, 0, 255')"></div>
+    <div class="pen" style="background-color: rgb(255, 0, 255)" onclick="setColor('255, 0, 255')"></div>
+    <hr>
+    <h2>Color: <div class="pen choosenPen" style="background-color: rgb(255, 255, 255)"></div></h2>
+</div>
+<div id="art">
+
+    {% for row in field %}
+        <div class="row">
+            {% for pixel in row %}
+            <div class="pixel" onclick="setPixelColor(this, '{{ pixel.0 }}, {{ pixel.1 }}')"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+<br>
+<button onclick="clearAll()">Clear all</button>
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script>field = {{ field }}</script>
+  <script src="{% static 'js/script.js'%}"></script>
+</html>
