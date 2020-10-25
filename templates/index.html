@@ -16,16 +16,15 @@
     <hr>
     <h2>Color: <div class="pen choosenPen" style="background-color: rgb(255, 255, 255)"></div></h2>
 </div>
-<div id="art">
-
+  <div id="art">
     {% for row in field %}
         <div class="row">
             {% for pixel in row %}
-            <div class="pixel" onclick="setPixelColor(this, '{{ pixel.0 }}, {{ pixel.1 }}')"></div>
+                <div class="pixel" style="background-color: rgb({{ pixel.2 }});" onclick="setPixelColor(this, '{{ pixel.0 }}, {{ pixel.1 }}')"></div>
             {% endfor %}
         </div>
-    {% endfor %}
-</div>
+     {% endfor %}
+   </div>
 <br>
 <button onclick="clearAll()">Clear all</button>
 </body>
